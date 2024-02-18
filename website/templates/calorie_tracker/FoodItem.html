@@ -1,0 +1,30 @@
+{% block content %}
+<html>
+<head></head>
+<body>
+    <br><br>
+    <form method="get">
+        <div class="form-group row">
+            {% csrf_token %}
+            <label class="col-md-2">
+                <b>Select CATEGORY </b>
+            </label>
+            <select class="col-md-6 form-control" name="food_category" id="food_category">
+                {% for item in fitem %}
+                <option value="{{item.fcategory}}">{{item.fcategory}}</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-success" type="submit" value="add">Submit</button>
+        </div>
+        </form> 
+        <!-- Display Details -->
+    <div class="row">
+        <table id="table">
+            {% for data in fitem %}
+            <tr><td style="text-align: center;"><a href="{% url 'calorie_tracker:FoodListView' data.pk%}">{{data.fitem}}</a></td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

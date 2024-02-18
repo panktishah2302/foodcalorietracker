@@ -1,0 +1,52 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'calorie_tracker/style1.css' %}">
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Login </title>
+  
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="/index" class="logo">BiteBalance</a>
+  </header>
+  <div class="login-page">
+    <div class="form">
+      <div class="login">
+        <div class="login-header">
+          <h3>Welcome Back</h3>
+        </div>
+      </div>
+
+      <form class="login-form" action="#" , method="post">
+        {% csrf_token %}
+
+        <input type="text" placeholder="Username" name="username"  required /><br>
+        <input type="password" placeholder="Password" name="password" required /><br>
+        <button>login</button>
+        <p class="message">
+          <h4><a href="{%url 'password_reset' %}">Reset Password</a></h4>
+          <h4>Not a member?<a class="sign-up" href="{%url 'calorie_tracker:signup_view' %}">signup</a></h4>
+        </p>
+      </form>
+      
+      {% if messages %}
+      {% for message in messages %}
+      {% if message.tags %} <script>
+        alert("{{ message }}")
+      </script> {% endif %}
+
+      {% endfor %}
+
+      {% endif %}
+
+    </div>
+  </div>
+
+</body>
+
+</html>

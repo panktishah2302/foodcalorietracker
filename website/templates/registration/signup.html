@@ -1,0 +1,50 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'calorie_tracker/style1.css' %}">
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Signup</title>
+  
+</head>
+
+<body>
+  <header class="header">
+    <a href="/index" class="logo">Calorie Tracker</a>
+  </header>
+  <div class="login-page">
+    <div class="form">
+      <div class="login">
+        <div class="login-header">
+          <h3>Create Your Free Account</h3>
+        </div>
+      </div>
+      <form class="login-form" action="#" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Username" name='username' required />
+        <input type="text" placeholder="Firstname" name='first_name' required />
+        <input type="text" placeholder="Lastname" name='last_name' required />
+        <input type="email" placeholder="Email" name='email' required />
+        <input type="password" placeholder="Password" name='password1'  required/>
+        <input type="password" placeholder="Confirm password" name='password2' required/>
+
+        <button> Signup </button>
+        <p class="message">
+          <h4>Have an account? <a href="{% url 'calorie_tracker:login' %}">Login</a></h4>
+        </p>
+      </form>
+
+      {% if messages %}
+      {% for message in messages %}
+      {% if message.tags %} <script>
+        alert("{{ message }}")
+      </script> {% endif %}
+      {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+</body>
+
+</html>

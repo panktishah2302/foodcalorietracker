@@ -1,0 +1,70 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'calorie_tracker/style1.css' %}">
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> BiteBalance </title>
+  
+
+  
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="/index" class="logo">BiteBalance</a>
+    <nav class="nav-items">
+      <a href="{% url 'calorie_tracker:home1' %}">Back to Home</a>
+    </nav>
+  </header>
+  <div class="login-page">
+    <div class="form">
+      <div class="login">
+        <div class="login-header">
+          <h3>BMI Calculator - Results</h3>
+        </div>
+      </div>
+      <p>For the information you entered:<p>
+      <p>Height : {{height}} meter </p>
+      <p>Weight : {{weight}} Kilograms </p>
+      <p class= "bmi">Your BMI is {{bmi}} , indicating your weight is in the <b>{{category}}</b> Weight category for your height  BMI is a screening measure and is not intended to diagnose disease or illness.  </p>     
+    <p>____________________________________________</p>
+  
+
+  <table class="table table-bordered" border= 1>
+    <thead>
+      <tr>
+        <th scope="col">BMI</th>
+        <th scope="col">Weight Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" {% if category == 'Underweight' %}class="highlight"{% endif %}>Below 18.5</th>
+        <td {% if category == 'Underweight' %}class="highlight"{% endif %}>Underweight</td>
+      </tr>
+      <tr>
+        <th scope="row"  {% if category == 'Normal' %}class="highlight"{% endif %}>18.5 - 24.9</th>
+        <td  {% if category == 'Normal' %}class="highlight"{% endif %}>Normal</td>
+      </tr>
+      <tr>
+        <th scope="row" {% if category == 'Overweight' %}class="highlight"{% endif %}>25.0 - 29.9</th>
+        <td {% if category == 'Overweight' %}class="highlight"{% endif %}>Overweight</td>
+      </tr>
+      <tr>
+        <th scope="row" {% if category == 'Obese' %}class="highlight"{% endif %} >30.0 and Above</th>
+        <td {% if category == 'Obese' %}class="highlight"{% endif %}>Obese</td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="{% url 'calorie_tracker:bmi' %}">Recalculate BMI</a>
+
+
+</div>
+</div>
+
+</body>
+
+</html>
