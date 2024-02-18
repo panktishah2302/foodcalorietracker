@@ -1,0 +1,15 @@
+# Ignore Markdown files
+*.md
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore database files
+*.db
+*.sqlite3
+
+# Ignore macOS system files
+.DS_Store
